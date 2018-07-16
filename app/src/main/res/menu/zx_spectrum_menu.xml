@@ -1,0 +1,28 @@
+<menu 
+	xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item
+        android:id="@+id/reset_item"
+        android:title="@string/reset"/>
+	
+	<item
+        android:id="@+id/toggle_stats_item"
+        android:title="@string/toggle_stats"/>
+	
+	<item
+        android:id="@+id/start_item"
+        android:title="@string/start"/>
+	
+	<item
+        android:id="@+id/stop_item"
+        android:title="@string/stop"/>
+	
+	<item
+        android:id="@+id/save_item"
+        android:title="@string/save"/>
+	
+	<item
+        android:id="@+id/restore_item"
+        android:title="@string/restore"/>
+    
+</menu>
