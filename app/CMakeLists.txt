@@ -26,7 +26,7 @@ add_library(
         src/main/cpp/Z80Exerciser.cpp
         src/main/cpp/hello-jni.cpp )
 
-target_include_directories(native-lib PUBLIC .)
+include_directories(src/main/cpp/)
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
