@@ -27,7 +27,7 @@ public class Z80ExerciserActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_z80_exerciser);
 
-		findViewById(R.id.test_button).setOnClickListener(new View.OnClickListener() {
+		findViewById(R.id.test_button).setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View p1) {

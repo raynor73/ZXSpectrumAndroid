@@ -1,36 +1,48 @@
 package ru.ilapin.zxspectrum;
 
 import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.media.AudioFormat;
+import android.media.AudioManager;
+import android.media.AudioTrack;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
-import ru.ilapin.zxspectrum.R;
 import ru.ilapin.common.android.widgets.PressReleaseButton;
-import android.app.*;
-import android.view.View.*;
-import android.view.*;
-import java.util.concurrent.*;
-import android.media.*;
-import java.util.*;
-import java.io.*;
-import java.text.*;
-import android.content.*;
-import android.widget.*;
-import android.net.*;
-import android.database.*;
-import java.net.*;
 
-public class ZxSpectrumActivity2 extends Activity {
+public class ZxSpectrumActivity2 extends AppCompatActivity {
 
     private static final String TAG = "ZxSpectrumActivity2";
 	
