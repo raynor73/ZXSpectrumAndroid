@@ -9,7 +9,8 @@
 #include "ZxSpectrum.h"
 
 static uint8_t readFromMemory(void* userData, uint16_t address) {
-    uint8_t* memory = static_cast<uint8_t *>(userData);
+    auto zxSpectrum = static_cast<ZxSpectrum*>(userData);
+    uint8_t* memory = zxSpectrum->memoryArray();
     return memory[address];
 }
 
@@ -17,17 +18,20 @@ static void writeToMemory(void* userData, uint16_t address, uint8_t data) {
     if (address < 0x4000) {
         return;
     }
-    uint8_t* memory = static_cast<uint8_t *>(userData);
+    auto zxSpectrum = static_cast<ZxSpectrum*>(userData);
+    uint8_t* memory = zxSpectrum->memoryArray();
     memory[address] = data;
 }
 
 static uint8_t readFromPort(void* userData, uint16_t port) {
-    uint8_t* io = static_cast<uint8_t *>(userData);
+    auto zxSpectrum = static_cast<ZxSpectrum*>(userData);
+    uint8_t* io = zxSpectrum->portsArray();
     return io[port];
 }
 
 static void writeToPort(void* userData, uint16_t port, uint8_t data) {
-    uint8_t* io = static_cast<uint8_t *>(userData);
+    auto zxSpectrum = static_cast<ZxSpectrum*>(userData);
+    uint8_t* io = zxSpectrum->portsArray();
     io[port & 0x00ff] = data;
 }
 
@@ -88,11 +92,13 @@ void ZxSpectrum::loop() {
             m_shouldInterrupt--;
 
             //m_cpu->interrupt(0);
+            /*z80_int(&m_cpu, false);
+            z80_int(&m_cpu, true);*/
         }
-        z80_int(&m_cpu, !shouldInterrupt);
+        z80_int(&m_cpu, shouldInterrupt);
 
         //m_cpu->execute();
-        z80_run(&m_cpu, 4);
+        z80_run(&m_cpu, 30);
 
         /*uint64_t currentTstates = m_cpu->tStates();
         clock_gettime(CLOCK_MONOTONIC, &m_currentTimestamp);
