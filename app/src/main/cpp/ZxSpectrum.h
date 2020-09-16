@@ -8,7 +8,7 @@
 
 #include <atomic>
 #include <ctime>
-#include "z80/Z80.h"
+#include <emulation/CPU/Z80.h>
 #include "Keyboard.h"
 #include "Beeper.h"
 
@@ -34,8 +34,8 @@ public:
 
 	uint8_t* memoryArray() { return m_memoryArray; }
 	uint8_t* portsArray() { return m_portsArray; }
-	Z80State cpuState() const { return m_cpu->state(); }
-	void setCpuState(Z80State state) { m_cpu->setState(state); }
+	/*Z80State cpuState() const { return m_cpu->state(); }
+	void setCpuState(Z80State state) { m_cpu->setState(state); }*/
 
 	void onKeyPressed(const int keyCode);
 	void onKeyReleased(const int keyCode);
@@ -43,7 +43,7 @@ public:
 private:
 	static const int CPU_CLOCK_PERIOD = 286; //ns
 
-	Z80* m_cpu;
+	Z80 m_cpu;
 
 	uint8_t m_memoryArray[0x10000];
 	uint8_t m_portsArray[0x10000];
