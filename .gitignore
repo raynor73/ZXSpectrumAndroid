@@ -32,6 +32,7 @@ proguard/
 # Idea Files
 .idea
 *.iml
+.cxx
 
 # Max OS Files
 .DS_Store
