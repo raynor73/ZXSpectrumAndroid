@@ -5,12 +5,14 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:ignore="RtlHardcoded"
     tools:context=".ZxSpectrumActivity2">
 
     <ru.ilapin.zxspectrum.ZxSpectrumView2
             android:id="@+id/zx_spectrum_screen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal|top" />
 
     <TextView
@@ -46,9 +48,9 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+        android:layout_alignParentRight="true">
 
         <ru.ilapin.common.android.widgets.PressReleaseButton
             android:id="@+id/capsShiftButton"
@@ -61,6 +63,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/zx_symbol" />
+
+        <Button
+            android:id="@+id/breakSpaceButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/break_space" />
+
+        <Button
+            android:id="@+id/enterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enter" />
 
     </LinearLayout>
 

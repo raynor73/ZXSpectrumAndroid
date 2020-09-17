@@ -11,9 +11,11 @@
 	<string name="zx_symbol">SYM</string>
 	
 	<string name="reset">Reset</string>
-	<string name="toggle_stats">Tiggle Stats</string>
+	<string name="toggle_stats">Toggle Stats</string>
 	<string name="start">Start</string>
 	<string name="stop">Stop</string>
 	<string name="save">Save</string>
 	<string name="restore">Restore</string>
+    <string name="break_space">BR. SPACE</string>
+	<string name="enter">ENTER</string>
 </resources>
