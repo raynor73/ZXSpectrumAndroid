@@ -105,6 +105,7 @@ public class ZxSpectrumActivity2 extends AppCompatActivity {
     TextView mExceededInstructionsView;
     PressReleaseButton mCapsShiftButton;
     PressReleaseButton mSymbolShiftButton;
+    Button mBothShiftsButton;
     Button mBreakSpaceButton;
     Button mEnterButton;
 
@@ -134,6 +135,7 @@ public class ZxSpectrumActivity2 extends AppCompatActivity {
         mExceededInstructionsView = findViewById(R.id.exceededInstructions);
         mCapsShiftButton = findViewById(R.id.capsShiftButton);
         mSymbolShiftButton = findViewById(R.id.symbolShiftButton);
+        mBothShiftsButton = findViewById(R.id.bothShiftsButton);
         mBreakSpaceButton = findViewById(R.id.breakSpaceButton);
         mEnterButton = findViewById(R.id.enterButton);
 
@@ -186,6 +188,34 @@ public class ZxSpectrumActivity2 extends AppCompatActivity {
             @Override
             public void onRelease() {
                 onKeyReleased(Keyboard.KEY_CODE_SYMBOL);
+            }
+        });
+        mBothShiftsButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                onKeyPressed(Keyboard.KEY_CODE_SHIFT);
+                mScreenView.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        onKeyPressed(Keyboard.KEY_CODE_SYMBOL);
+                    }
+                }, 250);
+                mScreenView.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        onKeyReleased(Keyboard.KEY_CODE_SHIFT);
+                    }
+                }, 500);
+                mScreenView.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        onKeyReleased(Keyboard.KEY_CODE_SYMBOL);
+                    }
+                }, 750);
             }
         });
         mBreakSpaceButton.setOnClickListener(new View.OnClickListener() {

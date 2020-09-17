@@ -65,6 +65,12 @@
             android:text="@string/zx_symbol" />
 
         <Button
+            android:id="@+id/bothShiftsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/both_shifts" />
+
+        <Button
             android:id="@+id/breakSpaceButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
