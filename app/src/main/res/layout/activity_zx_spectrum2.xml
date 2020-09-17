@@ -71,6 +71,12 @@
             android:text="@string/both_shifts" />
 
         <Button
+            android:id="@+id/breakButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/caps_shift_break_space" />
+
+        <Button
             android:id="@+id/breakSpaceButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

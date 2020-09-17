@@ -17,6 +17,7 @@
 	<string name="save">Save</string>
 	<string name="restore">Restore</string>
     <string name="break_space">BR. SPACE</string>
+    <string name="caps_shift_break_space">BREAK</string>
 	<string name="enter">ENTER</string>
     <string name="both_shifts">Both</string>
 </resources>

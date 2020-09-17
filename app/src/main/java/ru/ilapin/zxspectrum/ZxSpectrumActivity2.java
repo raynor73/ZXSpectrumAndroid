@@ -106,6 +106,7 @@ public class ZxSpectrumActivity2 extends AppCompatActivity {
     PressReleaseButton mCapsShiftButton;
     PressReleaseButton mSymbolShiftButton;
     Button mBothShiftsButton;
+    Button mBreakButton;
     Button mBreakSpaceButton;
     Button mEnterButton;
 
@@ -136,6 +137,7 @@ public class ZxSpectrumActivity2 extends AppCompatActivity {
         mCapsShiftButton = findViewById(R.id.capsShiftButton);
         mSymbolShiftButton = findViewById(R.id.symbolShiftButton);
         mBothShiftsButton = findViewById(R.id.bothShiftsButton);
+        mBreakButton = findViewById(R.id.breakButton);
         mBreakSpaceButton = findViewById(R.id.breakSpaceButton);
         mEnterButton = findViewById(R.id.enterButton);
 
@@ -214,6 +216,34 @@ public class ZxSpectrumActivity2 extends AppCompatActivity {
                     @Override
                     public void run() {
                         onKeyReleased(Keyboard.KEY_CODE_SYMBOL);
+                    }
+                }, 750);
+            }
+        });
+        mBreakButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                onKeyPressed(Keyboard.KEY_CODE_SHIFT);
+                mScreenView.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        onKeyPressed(Keyboard.KEY_CODE_SPACE);
+                    }
+                }, 250);
+                mScreenView.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        onKeyReleased(Keyboard.KEY_CODE_SHIFT);
+                    }
+                }, 500);
+                mScreenView.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        onKeyReleased(Keyboard.KEY_CODE_SPACE);
                     }
                 }, 750);
             }

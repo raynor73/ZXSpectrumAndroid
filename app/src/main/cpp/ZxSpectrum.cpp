@@ -84,7 +84,7 @@ void ZxSpectrum::loop() {
     m_isRunning = true;
     while (m_isRunning) {
         //const uint64_t startTstates = m_cpu->tStates();
-        //clock_gettime(CLOCK_MONOTONIC, &m_startTimestamp);
+        clock_gettime(CLOCK_MONOTONIC, &m_startTimestamp);
 
         bool shouldInterrupt = m_shouldInterrupt > 0;
         if (shouldInterrupt) {
@@ -100,20 +100,24 @@ void ZxSpectrum::loop() {
         z80_run(&m_cpu, 30);
 
         //uint64_t currentTstates = m_cpu->tStates();
-        //clock_gettime(CLOCK_MONOTONIC, &m_currentTimestamp);
+        clock_gettime(CLOCK_MONOTONIC, &m_currentTimestamp);
 
-        /*long expectedTime = m_cpu.cycles * CPU_CLOCK_PERIOD;
-        long actualTime = uint64_t(m_currentTimestamp.tv_nsec - m_startTimestamp.tv_nsec);*/
+        long expectedTime = m_cpu.cycles * CPU_CLOCK_PERIOD;
+        long actualTime = uint64_t(m_currentTimestamp.tv_nsec - m_startTimestamp.tv_nsec);
 
         /*if (expectedTime > actualTime) {
-            timespec timeToSleep;
-            timeToSleep.tv_sec = 0;
-            timeToSleep.tv_nsec = 1;//expectedTime - actualTime;
-            clock_nanosleep(CLOCK_MONOTONIC, 0, &timeToSleep, nullptr);
             while (expectedTime > actualTime) {
                 clock_gettime(CLOCK_MONOTONIC, &m_currentTimestamp);
                 actualTime = uint64_t(m_currentTimestamp.tv_nsec - m_startTimestamp.tv_nsec);
             }
+        } else {
+            m_exceededInstructionsCounter++;
+        }*/
+        /*if (expectedTime > actualTime) {
+            timespec timeToSleep;
+            timeToSleep.tv_sec = 0;
+            timeToSleep.tv_nsec = expectedTime - actualTime;
+            clock_nanosleep(CLOCK_MONOTONIC, 0, &timeToSleep, nullptr);
         } else {
             m_exceededInstructionsCounter++;
         }*/
