@@ -470,7 +470,7 @@ public class ZxSpectrumActivity2 extends AppCompatActivity {
         });
         mZxSpectrumThread.start();
 
-        mSoundThread = new Thread(new Runnable() {
+        /*mSoundThread = new Thread(new Runnable() {
 
             @Override
             public void run() {
@@ -478,7 +478,7 @@ public class ZxSpectrumActivity2 extends AppCompatActivity {
             }
         });
         mSoundThread.setPriority(Thread.MAX_PRIORITY);
-        mSoundThread.start();
+        mSoundThread.start();*/
 
         invalidateOptionsMenu();
     }
